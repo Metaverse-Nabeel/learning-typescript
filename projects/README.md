@@ -1,4 +1,4 @@
-<h1 align="center"><em>Learning TypeScript</em> Projects</h1>
+<h1 align="center"><em>Learning TypeScript </em>Projects</h1>
 
 <p align="center">Hands-on real world projects that will help you exercise your knowledge of TypeScript.</p>
 
