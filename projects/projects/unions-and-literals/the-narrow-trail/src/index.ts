@@ -1,34 +1,54 @@
 export function runCommands() {
 	// Declare your variables and runtime logic here! ✨
-	let available_resources: "water" | "food" | undefined;
+	let nextSupply: "water" | "food" | undefined;
 	let day: number = 1;
 	let food: number = 5;
 	let water: number = 5;
 
 	for (day; day <= 7; day++) {
 		let randomNumber: number = Math.ceil(Math.random() * 6);
-		if (randomNumber === 1) {
-			food++;
-		} else if (randomNumber === 2) {
-			water++;
-		} else {
-			if (available_resources == undefined) {
-				if (randomNumber % 2 == 0) {
-					available_resources = "food";
+		let command: "finish" | "food" | "water" | number;
+
+		switch (randomNumber) {
+			case 1:
+				command = "food";
+				break;
+
+			case 2:
+				command = "water";
+				break;
+
+			default:
+				command = randomNumber;
+				break;
+		}
+
+		if (typeof command === "number") {
+			switch (nextSupply) {
+				case "food":
+					food += command;
+					nextSupply = undefined;
 					break;
-				} else {
-					available_resources = "water";
+
+				case "water":
+					water += command;
+					nextSupply = undefined;
 					break;
-				}
+
+				default:
+					nextSupply = randomNumber % 2 === 0 ? "food" : "water";
+					break;
 			}
-			if (available_resources === "water") {
-				// water += randomNumber;
-				water = water + randomNumber;
-				available_resources = undefined;
-			} else {
-				food = food + randomNumber;
-				available_resources = undefined;
-			}
+		}
+
+		switch (command) {
+			case "food":
+				nextSupply = "food";
+				break;
+
+			case "water":
+				nextSupply = "water";
+				break;
 		}
 
 		food -= 1;
