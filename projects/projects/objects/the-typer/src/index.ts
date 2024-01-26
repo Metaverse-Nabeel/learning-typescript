@@ -102,7 +102,7 @@ while (current) {
 					current = current.downstream;
 					break;
 				case "end":
-					current = current.upstream;
+					current = current.upstream; //correct this
 					break;
 				case "middle":
 					current =
