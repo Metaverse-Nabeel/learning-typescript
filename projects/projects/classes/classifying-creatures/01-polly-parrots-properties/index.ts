@@ -1,6 +1,5 @@
 // Write your Parrot class here! ✨
 // You'll need to export it so the tests can run it.
-// Will practice after the election results
 export class Parrot {
 	#name: string;
 	#phrases: string[];
